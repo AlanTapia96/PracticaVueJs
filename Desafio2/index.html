@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica Vue Js</title>
+</head>
+<body>
+    
+    <div id="app">
+       
+        <input type="text" v-model='titleInput'>
+        <button @click='sendTitle'>Enviar</button>
+        {{titleInput}}
+
+        <div v-if='titleModal'>
+            <h5>Si desea ver el título a mostrar, pase el mouse sobre el botón</h5>
+            <button @mouseOver='toggleTitle' @mouseOut='toggleTitle'>Mostrar título</button>
+            <p v-show='showTitle'>Título modal: {{ titleModalChanged }}</p>
+        </div>
+        <div v-else>
+            <p>No se agregaró un título</p>
+        </div>
+        <br>
+        <button @click='toggleModal'>Mostrar Modal</button>
+
+       <Modal v-if='showModal' :title="titleModal" @close-modal='toggleModal'>
+           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse ad, repudiandae ipsum quam necessitatibus ducimus aliquid consequatur. Repudiandae, nulla repellat eligendi numquam officia maiores beatae debitis, amet, fuga ipsum eius!</p>
+       </Modal>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <script src="./main.js"></script>
+</body>
+</html> 
